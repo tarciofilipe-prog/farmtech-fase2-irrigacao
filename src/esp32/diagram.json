@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "author": "Tarcio Filipe de Almeida Barros - RM576489",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -115.5, "left": -168.6, "attrs": { "humidity": "45", "temperature": "28" } },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr1", "top": 236.8, "left": -287.2, "attrs": {} },
+    { "type": "wokwi-pushbutton", "id": "btnN", "top": -134.2, "left": 182.4, "attrs": { "color": "green", "label": "N", "bounce": "0" } },
+    { "type": "wokwi-pushbutton", "id": "btnP", "top": -57.4, "left": 182.4, "attrs": { "color": "green", "label": "P", "bounce": "0" } },
+    { "type": "wokwi-pushbutton", "id": "btnK", "top": 19.4, "left": 182.4, "attrs": { "color": "green", "label": "K", "bounce": "0" } },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 182.6, "left": 182.4, "attrs": {} },
+    { "type": "wokwi-led", "id": "ledBomba", "top": 140.4, "left": 403.4, "attrs": { "color": "blue", "label": "Bomba" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 243.95, "left": 393.6, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht1:SDA", "esp:4", "green", [ "v0" ] ],
+
+    [ "ldr1:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "ldr1:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "ldr1:AO", "esp:34", "orange", [ "h0" ] ],
+
+    [ "btnN:1.l", "esp:13", "green", [ "h0" ] ],
+    [ "btnN:2.l", "esp:GND.2", "black", [ "h0" ] ],
+    [ "btnP:1.l", "esp:14", "green", [ "h0" ] ],
+    [ "btnP:2.l", "esp:GND.2", "black", [ "h0" ] ],
+    [ "btnK:1.l", "esp:27", "green", [ "h0" ] ],
+    [ "btnK:2.l", "esp:GND.2", "black", [ "h0" ] ],
+
+    [ "relay1:VCC", "esp:5V", "red", [ "h0" ] ],
+    [ "relay1:GND", "esp:GND.3", "black", [ "h0" ] ],
+    [ "relay1:IN", "esp:26", "blue", [ "h0" ] ],
+    [ "relay1:COM", "esp:3V3", "red", [ "h0" ] ],
+    [ "relay1:NO", "r1:1", "blue", [ "h0" ] ],
+    [ "r1:2", "ledBomba:A", "blue", [ "v0" ] ],
+    [ "ledBomba:C", "esp:GND.3", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}

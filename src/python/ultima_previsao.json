@@ -1,0 +1,10 @@
+{
+  "local": "Recife/PE (Zona da Mata - polo canavieiro)",
+  "latitude": -8.05,
+  "longitude": -34.9,
+  "fonte": "Open-Meteo",
+  "consultado_em": "2026-10-14T12:26:18",
+  "chuva_24h_mm": 0.1,
+  "probabilidade_maxima": 37,
+  "suspender_irrigacao": false
+}
